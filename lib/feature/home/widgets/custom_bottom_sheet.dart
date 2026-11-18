@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:contact_app/core/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,6 +30,15 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
        });
      }
 
+   }
+   void submitContact(){
+     final contact = ContactModel(
+         name: nameController.text,
+         email: emailController.text,
+         phone: phoneController.text,
+         imagePath: selectedImage?.path,
+     );
+     Navigator.pop(context, contact);
    }
   @override
   void dispose() {
@@ -220,7 +230,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: submitContact,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: AppColors.backGroundColor,
