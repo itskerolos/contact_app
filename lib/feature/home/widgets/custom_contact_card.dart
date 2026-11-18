@@ -7,7 +7,9 @@ import '../../../core/theme/app_colors.dart';
 
 class CustomContactCard extends StatelessWidget {
   final ContactModel contact;
-  const CustomContactCard({super.key, required this.contact});
+  final ValueChanged<int> onDelete;
+  final int index;
+  const CustomContactCard({super.key, required this.contact, required this.onDelete, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,9 @@ class CustomContactCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          onDelete(index);
+                        },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 31),
 

@@ -28,6 +28,11 @@ class _HomePageState extends State<HomePage> {
       contacts.removeLast();
     });
   }
+  void deleteContact(int index){
+    setState(() {
+      contacts.removeAt(index);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +68,8 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context , index){
                       return CustomContactCard(
                           contact: contacts[index],
+                        onDelete: deleteContact,
+                        index: index,
 
                       );
                       },
